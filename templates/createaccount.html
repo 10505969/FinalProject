@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>FLOI | Create Account</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/FLoI.css') }}">
+</head>
+<h1>Fantasy League of Ireland</h1>
+<form action="" method="post">
+   {{ form.hidden_tag() }}
+   <p>
+      {{ form.username.label }}<br>
+      {{ form.username(size=32) }}
+   </p>
+   <p>
+      {{ form.password.label }}<br>
+      {{ form.password(size=32) }}
+   </p>
+   <p>{{ form.submit() }}</p>
+</form>
+
+<p>Already have an account? Click <a href="{{ url_for('login') }}">here</a></p>
+
+{% if errorMsg %}
+<p id="loginError">This email address is already in use.</p>
+{% endif %}
+</html>
