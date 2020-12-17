@@ -6,15 +6,6 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship, sessionmaker,scoped_session, query
 from flask_login import UserMixin
 
-
-
-
-
-
-
-
-
-
 metadata = MetaData()
 
 engine = create_engine('sqlite:///FantasyLeagueOfIreland.db', echo=False)  # echo=False

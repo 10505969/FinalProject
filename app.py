@@ -24,11 +24,6 @@ def unauthorized():
     """Redirect unauthorized users to Login page."""
     return redirect(url_for('login'))
 
-#Test Login end
-
-
-#Business Layer
-
 def loginCheck(emailInput, passwordInput):
     user = User(email=emailInput, password=passwordInput)
     if len(user.getUser()) > 0:
@@ -48,7 +43,6 @@ def addUser(emailInput, passwordInput):
     if loginCheck(emailInput, passwordInput) == False:
         user.addUser()
 
-
 @app.route('/')
 @app.route("/home")
 @app.route("/index")
@@ -60,7 +54,6 @@ def home():
 @login_required
 def about():
   return render_template("about.html")
-
 
 @app.route('/login', methods=['GET','POST'])
 def login():
@@ -75,11 +68,6 @@ def login():
         else:
             errorMsg = True
     return render_template('login.html', form=form, errorMsg=errorMsg)
-
-        #     errorMsg = False
-        #     return redirect(url_for('home'))
-        # else:
-        #     errorMsg = True
 
 @app.route('/create', methods=['GET','POST'])
 def createAcc():

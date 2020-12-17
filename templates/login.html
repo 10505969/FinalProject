@@ -19,6 +19,8 @@
    <p>{{ form.submit() }}</p>
 </form>
 
+<p>New User? Click <a href="{{ url_for('createAcc') }}">here</a></p>
+
 {% if errorMsg %}
 <p id="loginError">Incorrect Login Details. Please try again</p>
 {% endif %}
