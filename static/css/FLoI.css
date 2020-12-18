@@ -71,8 +71,14 @@ display: inline;
 margin-left: 35px;
 }
 .menu li a {
-color: #444;
+color: #fff;
 text-decoration: none;
+}
+
+.menu li a:hover {
+	border-bottom: 4px solid #0053f9;
+	color: #0053f9;
+	cursor:pointer;
 }
 
 #loginError {
