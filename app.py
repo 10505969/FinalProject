@@ -1,5 +1,5 @@
 from flask import Flask,request, jsonify, render_template, redirect, url_for
-from Data import User,session
+from Data import User,getUser,session
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
 from forms import CreateForm, LoginForm
 from sqlalchemy import and_
@@ -7,7 +7,7 @@ from sqlalchemy import and_
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'filesystem'
 
-#Test Login start
+#Login logic
 
 login_manager = LoginManager()
 login_manager.init_app(app)
@@ -60,7 +60,8 @@ def login():
     errorMsg = False
     form = LoginForm()
     if form.validate_on_submit():
-        user = session.query(User).filter(and_(User.email==form.username.data,User.password==form.password.data)).first()
+        #user = session.query(User).filter(and_(User.email==form.username.data,User.password==form.password.data)).first()
+        user = getUser(form.username.data,form.password.data)
         if user:
             errorMsg = False
             login_user(user, remember=form.remember_me.data)
@@ -90,6 +91,21 @@ def createAcc():
 def logout():
     logout_user()
     return redirect(url_for('login'))
+
+@app.route('/pickteam')
+@login_required
+def pickTeam():
+    return render_template("pickteam.html")
+
+@app.route('/points')
+@login_required
+def points():
+    return render_template("points.html")
+
+@app.route('/transfers')
+@login_required
+def transfers():
+    return render_template("transfers.html")
 
 if __name__ == '__main__':
     app.run()

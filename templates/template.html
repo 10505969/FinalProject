@@ -8,12 +8,15 @@
    <body>
       <header>
          <div class="container">
-            <h1 class="logo">Simple Flask Website</h1>
+            <h1 class="logo">Fantasy League of Ireland</h1>
             <strong>
                <nav>
                   <ul class="menu">
                      <li><a href="{{ url_for('home') }}">Home</a></li>
-                     <li><a href="{{ url_for('about') }}">About</a></li>
+                      <li><a href="{{ url_for('pickTeam') }}">Pick Team</a></li>
+                      <li><a href="{{ url_for('points') }}">Points</a></li>
+                      <li><a href="{{ url_for('transfers') }}">Transfers</a></li>
+                      <li><a href="{{ url_for('about') }}">About</a></li>
                       <li><a href="{{ url_for('logout') }}">Log Out</a></li>
                   </ul>
                </nav>
